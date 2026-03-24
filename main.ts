@@ -126,6 +126,9 @@ export default class MdxTools extends Plugin {
 				const file = this.app.metadataCache.getFirstLinkpathDest(e.linktext, e.sourcePath);
 				if (!file || file.extension !== 'mdx') return;
 
+				// Let the file explorer show its native tooltip (created/modified dates)
+				if (e.source === 'file-explorer' || e.source === 'search') return;
+
 				// Don't create a second popover if one is already showing
 				if (e.hoverParent.hoverPopover) return;
 
